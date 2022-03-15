@@ -1,0 +1,62 @@
+<!doctype html>
+
+<html>
+<head>
+    <meta charset="utf-8">
+</head>
+<body>
+    <form action="server.php" method="get">
+        <!-- 演示时间和日期 -->
+        <label>时间：<input type="text" name="time"></label>
+        <br><br>
+        <label>日期：<input type="date" name="date"></label>
+        <br><br>
+        <label>年月：<input type="month" name="month"></label>
+        <br><br>
+        <label>星期：<input type="week" name="week"></label>
+        <br><br>
+        <label>本地日期和时间：<input type="datetime-local" name="datetime-local"></label>
+        <br><br>
+        <input type="submit" value="提交">
+    </form>
+
+    <div>
+        <input type="text" placeholder="enter user ID" name="id" id = "id"/>
+    </div>
+    <div>
+        <input type="text" placeholder="enter password" name="password" id = "password"/>
+    </div>
+    <div>
+        <a target="_self"><button onclick = "verify()">login</button></a>
+    </div>
+</body>
+
+<script>
+    function verify() {
+        var id = document.getElementById('id');
+        var password = document.getElementById('password');
+        var idv  =id.value;
+        var passwordv = password.value;
+        var xmlhttp;
+        if (window.XMLHttpRequest)
+        {
+            xmlhttp=new XMLHttpRequest();
+        }
+        else
+        {
+            xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        xmlhttp.onreadystatechange=function() {
+			if (xmlhttp.readyState==4 && xmlhttp.status==200){
+                var user_info = xmlhttp.responseText;
+				var value = user_info.split(" "); 
+                if (value == 1) window.alert("pass 1");
+                else window.alert("no pass");
+			}
+		}
+        xmlhttp.open("GET","server.php?id="+String(idv)+"&password="+String(passwordv),true);
+        xmlhttp.send();
+    }
+</script>
+
+</html>
