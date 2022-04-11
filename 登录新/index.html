@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Foredawn</title>
+    <link rel="stylesheet" href="./css/main.css">
+    <link rel="icon" href="./image/fire.png" type="image/x-icon">
+</head>
+
+<body>
+    <div class="container">
+        <!-- 头部 -->
+        <div class="header">
+            <div class="logo">
+                <img src="./image/fire.png" alt="">
+                <span>Foredawn</span>
+            </div>
+
+            <div class="middle">
+                <div class="search">
+                    <input type="text" placeholder="search">
+                </div>
+            </div>
+
+            <div class="other">
+                <div class="menu">
+                    <img src="./image/store.png" alt="store">
+                    <img src="./image/message.png" alt="message">
+                    <img src="./image/setup.png" alt="setup">
+                </div>
+                <div class="userInfo">
+                    <img src="./image/user.png" alt="A">
+                    <span>User</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- 渐变线条 -->
+        <div class="line"></div>
+
+        <!-- 主体 -->
+        <div class="main">
+            <div class="left">
+                <img src="./image/back.jpeg" alt="Let's go!">
+            </div>
+            <div class="right">
+                <div class="form">
+                    <form role="form" action="doRegister" method="post" class="login-form">
+                        <div class="form-group">
+                            <label class="sr-only" for="form-username">Username</label>
+                            <input type="text" name="username" placeholder="Username" class="inputs" id="form-username">
+                        </div>
+                        <div class="form-group">
+                            <label class="sr-only" for="form-password">Password</label>
+                            <input type="password" name="password" placeholder="8-16 bits" class="inputs" id="form-password">
+                        </div>
+                        <div class="form-group">
+                            <label class="sr-only" for="form-password">Email</label>
+                            <input type="text" name="email" placeholder="Valid Email" class="inputs" id="email">
+                            <div class="block"></div>
+                            <input type="button" onclick="countdown()" class="btn" id="emailcore" value="Send">
+                            <input type="text" name="code" placeholder="Identifying Code" class="inputs" id="code">
+                        </div>
+                        <div class="button">
+                            <a target="_self"><button onclick="verify()">login</button></a>
+                        </div>
+                        <div class="button">
+                            <a target="_self"><button onclick="register()">register</button></a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- 底部 -->
+        <div class="footer">
+            <span class="groupinfo">CSC4001 Group4</span>
+        </div>
+    </div>
+    <script src="./js/listen.js"></script>
+    <script src="./js/nodemail.js"></script>
+    <script src="./js/countdown.js"></script>
+    <script src="./js/verify.js"></script>
+</body>
+
+</html>
