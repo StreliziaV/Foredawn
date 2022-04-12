@@ -1,0 +1,252 @@
+/* 公共样式 */
+
+* {
+    padding: 0;
+    margin: 0;
+}
+
+img,
+span {
+    user-select: none;
+    cursor: pointer;
+}
+
+
+/* ----------------------- */
+
+.container {
+    width: 100%;
+    height: 100%;
+}
+
+
+/* -------header-------begin */
+
+.header {
+    width: 100%;
+    height: 60px;
+    background-color: #1e1e20;
+    display: flex;
+    position: relative;
+}
+
+.header .logo {
+    display: flex;
+    height: 100%;
+    width: 175px;
+    align-items: center;
+    margin-left: 25px;
+    user-select: none;
+}
+
+.logo img {
+    width: 30px;
+    height: 30px;
+}
+
+.logo span {
+    display: block;
+    font-size: 25px;
+    color: #fff;
+    margin-left: 15px;
+    font-weight: bold;
+}
+
+.header .middle {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    margin-left: 890px;
+}
+
+.middle .search {
+    height: 20px;
+    background-color: #434346;
+    display: flex;
+    align-items: center;
+    border-radius: 30px;
+    padding: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.search input {
+    background-color: transparent;
+    border: 0;
+    height: 15px;
+    line-height: 15px;
+    width: 200px;
+    outline: none !important;
+    color: #fff;
+    margin-left: 5px;
+}
+
+.other {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    width: 500px;
+    margin-left: 80px;
+}
+
+.other .menu {
+    display: flex;
+    align-items: center;
+}
+
+.other .menu img {
+    margin-right: 15px;
+    height: 25px;
+    width: 25px;
+    border-radius: 50%;
+}
+
+.other .userInfo {
+    display: flex;
+    align-items: center;
+}
+
+.other .userInfo img {
+    margin-right: 15px;
+    height: 35px;
+    width: 35px;
+    border-radius: 50%;
+}
+
+.other .userInfo span {
+    color: #fbf6f6;
+    font-size: 15px;
+}
+
+
+/* ------header-------- end*/
+
+.line {
+    width: 100%;
+    height: 2px;
+    background-image: linear-gradient(120deg, #f8f7f6 0%, red 30%, red 60%, #464547 100%);
+}
+
+.main {
+    width: 100%;
+    height: 660px;
+    display: flex;
+}
+
+
+/* -------left------begin */
+
+.main .left {
+    height: 100%;
+    width: 450px;
+    background-color: #434343;
+    border-right: 1px #686868 solid;
+    color: #fff;
+    font-size: 15px;
+}
+
+
+/* -------left------end */
+
+
+/* -------right------begin */
+
+.main .right {
+    width: 13500px;
+    height: 100%;
+    background-image: url(../image/ruins3.jpeg);
+    background-repeat: no-repeat;
+    background-position: left top;
+    background-color: #242645;
+    background-size: cover;
+    color: #fff;
+    font-family: 'Source Sans Pro';
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.right .form {
+    height: 100%;
+    width: 100%;
+    background-color: transparent;
+    color: #fff;
+    font-size: 25px;
+    align-items: center;
+    display: flex;
+    margin-left: 100px;
+}
+
+.form.login-form {
+    height: 90%;
+    width: 80%;
+    top: 30px;
+    background-color: transparent;
+    color: #fff;
+    font-size: 25px;
+    align-items: center;
+    display: flex;
+}
+
+.login-form .form-group {
+    height: 45px;
+    width: 100%;
+    background-color: transparent;
+    color: #fff;
+    font-size: 25px;
+    align-items: center;
+    display: flex;
+}
+
+.login-form .button {
+    height: 30px;
+    width: 100%;
+    background-color: transparent;
+    color: #fff;
+    font-size: 20px;
+    align-items: center;
+    display: flex;
+    margin-left: 50px;
+}
+
+.form-group .block {
+    height: 20px;
+    width: 100%;
+    background-color: transparent;
+    display: block;
+}
+
+.form-group .inputs {
+    height: 35px;
+    width: 200px;
+    margin-left: 20px;
+    background-color: black;
+    display: flex;
+}
+
+
+/* -------center------end */
+
+
+/* -------footer-box------begin */
+
+.footer {
+    border-top: 1px #686868 solid;
+    height: 68px;
+    background-color: #111112;
+    display: flex;
+    position: relative;
+}
+
+.footer span {
+    display: block;
+    font-size: 20px;
+    color: rgb(186, 182, 182);
+    margin-left: 800px;
+    font-weight: normal;
+    align-items: center;
+}
+
+
+/* -------footer------end */
