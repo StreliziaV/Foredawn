@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Foredawn</title>
+    <link rel="stylesheet" href="./css/my.css">
+    <link rel="icon" href="./image/fire.png" type="image/x-icon">
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <!-- 头部 -->
+        <div class="header">
+            <div class="logo">
+                <img src="./image/fire.png" alt="">
+                <span>Foredawn</span>
+            </div>
+
+            <div class="middle">
+                <div class="search">
+                    <i class="iconfont icon-sousuo"></i>
+                    <input type="text" placeholder="search">
+                </div>
+            </div>
+
+            <div class="other">
+                <div class="menu">
+                    <img src="./image/store.png" alt="store">
+                    <img src="./image/message.png" alt="message">
+                    <img src="./image/setup.png" alt="setup">
+                </div>
+                <div>
+                    <input type="button" id="game" value="Back to game" class="button">
+                </div>
+            </div>
+        </div>
+
+        <!-- 渐变线条 -->
+        <div class="line"></div>
+        <!-- 主体 -->
+        <div class="main">
+            <div class="left">
+                <div class="photo">
+                    <img src="./image/user.png" alt="User" id="photo">
+                </div>
+                <div class="outbox">
+                    <div class="skbox">
+                        <label for="photo_upload">
+                            <input type="button" class="btn" value="upload"><span id="text">You can upload photo.</span>
+                            <input type="file" name="pic" id="pic" accept="image/jpeg,image/jpg,image/png,image/svg">
+                        </label>
+                    </div>
+                    <span></span>
+                    <div class="imgbox"><img></div>
+                </div>
+            </div>
+            <div class="right">
+                <div class="block" id="u">
+                    <label class="sr-only" for="form-username">Username</label>
+                    <span class="only" id="username">undefined</span><br>
+                </div>
+                <div class="block" id="p">
+                    <label class="sr-only" for="form-password">Password</label>
+                    <input type="button" id="modify" value="modify" class="btn">
+                    <div id="hide">
+                        <label class="pwd">Old</label>
+                        <input type="text" class="lll" id="old" placeholder="old_pwd"><br>
+                        <label class="pwd">New</label>
+                        <input type="text" class="lll" id="new" placeholder="new_pwd 8+ bits"><br>
+                        <label class="pwd">Verify</label>
+                        <input type="text" class="lll" id="verif" placeholder="verify again"><br>
+                    </div>
+                </div>
+                <div class="block" id="e">
+                    <label class="sr-only" for="form-username">Email</label>
+                    <span class="only" id="email">undefined</span>
+                </div>
+                <input type="button" id="logout" value="logout" class="btn"><br>
+            </div>
+        </div>
+        <script src="js/my.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- 底部 -->
+        <div class="footer">
+            <span class="groupinfo">CSC4001 Group4</span>
+        </div>
+    </div>
+</body>
+
+</html>

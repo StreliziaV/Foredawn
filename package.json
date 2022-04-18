@@ -1,0 +1,23 @@
+{
+    "dependencies": {
+        "body-parser": "^1.20.0",
+        "express": "^4.17.3",
+        "express-art-template": "^1.0.1",
+        "fs": "^0.0.1-security",
+        "multer": "^1.4.4",
+        "mysql": "^2.18.1",
+        "nodemailer": "^6.7.3",
+        "os": "^0.1.2",
+        "path": "^0.12.7"
+    },
+    "name": "foredawn",
+    "version": "1.0.0",
+    "main": "server.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "author": "",
+    "license": "ISC",
+    "keywords": [],
+    "description": "邮箱发送检测方法：\r 终端输入:npm install\r (不要删除json文件)"
+}

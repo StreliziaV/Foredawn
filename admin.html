@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Foredawn</title>
+    <link rel="stylesheet" href="./css/admin.css">
+    <link rel="icon" href="./image/fire.png" type="image/x-icon">
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+
+<body>
+    <div class="container" id="normal_panel">
+        <!-- 头部 -->
+        <div class="header">
+            <div class="logo">
+                <img src="./image/fire.png" alt="">
+                <span>Foredawn</span>
+            </div>
+
+            <div class="middle">
+                <div class="search">
+                    <i class="iconfont icon-sousuo"></i>
+                    <input type="text" placeholder="search">
+                </div>
+            </div>
+
+            <div class="other">
+                <div class="menu">
+                    <img src="./image/store.png" alt="store">
+                    <img src="./image/message.png" alt="message">
+                    <img src="./image/setup.png" alt="setup">
+                </div>
+                <div>
+                    <span>Administrator page</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- 渐变线条 -->
+        <div class="line"></div>
+        <!-- 主体 -->
+        <div class="main">
+            <!-- 修改密码 -->
+            <div class="left">
+                <div id="modify_pwd">
+                    <div class="iii">
+                        <span>Modify users' password</span>
+                    </div>
+                    <div id="block">
+                        <label class="modify">Username</label>
+                        <input type="text" id="username" placeholder="username" class="input"><br>
+                    </div>
+                    <div id="block">
+                        <label class="modify">New password</label>
+                        <input type="text" id="new" placeholder="new_pwd 8+ bits" class="input"><br>
+                    </div>
+                    <div id="block">
+                        <label class="modify">Verify</label>
+                        <input type="text" id="verif" placeholder="verify again" class="input"><br>
+                    </div>
+                </div>
+                <div id="btn">
+                    <input type="button" id="modify" value="modify"><br>
+                </div>
+            </div>
+            <div class="right">
+                <div class="upper">
+                    <table id="display_zone">
+                        <!-- user list 表格 -->
+                        <tr>
+                            <th> User_id</th>
+                            <th> Username</th>
+                            <th> Password</th>
+                            <th> Email</th>
+                            <th> IsAdmin</th>
+                        </tr>
+                    </table>
+                </div>
+                <input type="button" class="button" id="update" value="update"><br>
+                <input type="button" class="button" id="logout" value="logout"><br>
+            </div>
+        </div>
+        <!-- 底部 -->
+        <div class="footer">
+            <span class="groupinfo">CSC4001 Group4</span>
+        </div>
+    </div>
+    <script src="js/admin.js" type="text/javascript" charset="utf-8"></script>
+
+</body>
+
+</html>
