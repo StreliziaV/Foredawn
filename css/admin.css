@@ -1,0 +1,255 @@
+/* 公共样式 */
+
+@font-face {
+    font-family: myFirstFont;
+    src: url(../font/Nosifer-Regular.ttf);
+}
+
+@font-face {
+    font-family: myFirstFont2;
+    src: url(../font/Arizonia-Regular.ttf);
+}
+
+* {
+    padding: 0;
+    margin: 0;
+}
+
+img,
+span {
+    user-select: none;
+    cursor: pointer;
+}
+
+
+/* ----------------------- */
+
+.container {
+    width: 100%;
+    height: 100%;
+}
+
+
+/* -------header-------begin */
+
+.header {
+    width: 100%;
+    height: 60px;
+    background-color: #1e1e20;
+    display: flex;
+    position: relative;
+}
+
+.header .logo {
+    display: flex;
+    height: 100%;
+    width: 175px;
+    align-items: center;
+    margin-left: 25px;
+    user-select: none;
+}
+
+.logo img {
+    width: 30px;
+    height: 30px;
+}
+
+.logo span {
+    font-family: myFirstFont;
+    display: block;
+    font-size: 25px;
+    color: #fff;
+    margin-left: 15px;
+    font-weight: bold;
+}
+
+.header .middle {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    margin-left: 800px;
+}
+
+.middle .search {
+    height: 20px;
+    background-color: #434346;
+    display: flex;
+    align-items: center;
+    border-radius: 30px;
+    padding: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.search input {
+    background-color: transparent;
+    border: 0;
+    height: 15px;
+    line-height: 15px;
+    width: 200px;
+    outline: none !important;
+    color: #fff;
+    margin-left: 5px;
+}
+
+.other {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    width: 450px;
+    margin-left: 50px;
+}
+
+.other .menu {
+    display: flex;
+    align-items: center;
+}
+
+.other .menu img {
+    margin-right: 15px;
+    height: 25px;
+    width: 25px;
+    border-radius: 50%;
+}
+
+.other span {
+    font-family: myFirstFont2;
+    margin-left: 20px;
+    margin-right: 5px;
+    font-size: 30px;
+    color: #fff
+}
+
+
+/* ------header-------- end*/
+
+.line {
+    width: 100%;
+    height: 2px;
+    background-image: linear-gradient(120deg, #f8f7f6 0%, red 30%, red 60%, #464547 100%);
+}
+
+.main {
+    width: 100%;
+    height: 660px;
+    display: flex;
+    background-image: url(../image/ruins4.jpeg);
+    background-repeat: no-repeat;
+    background-position: left top;
+    background-size: cover;
+    font-size: 22px;
+}
+
+.iii {
+    margin-bottom: 30px;
+    color: #fff;
+    font-size: 20px;
+    margin-left: 55px;
+}
+
+.left {
+    width: 30%;
+    height: 100%;
+}
+
+#modify_pwd {
+    margin-top: 90px;
+    margin-left: 60px;
+    color: black;
+    width: 100%;
+    font-size: 18px;
+}
+
+#block {
+    margin-bottom: 40px;
+    margin-left: 10px;
+    width: 100%;
+    height: 25%;
+    display: flex;
+}
+
+.input {
+    width: 200px;
+    height: 30px;
+    background-color: #010101;
+    color: #fff;
+    font-size: 15px;
+    margin-left: 10px;
+    display: flex;
+}
+
+#modify {
+    height: 30px;
+    width: 60px;
+    font-size: 15px;
+    margin-left: 200px;
+    align-items: center;
+}
+
+#username {
+    margin-left: 50px;
+}
+
+#verif {
+    margin-left: 85px;
+}
+
+.upper {
+    margin-top: 100px;
+    height: 65%;
+    color: #fff;
+    background-color: linear-gradient(rgb(70, 69, 69), black, (70, 69, 69));
+}
+
+.button {
+    height: 30px;
+    width: 60px;
+    font-size: 15px;
+    margin-left: 1000px;
+    margin-bottom: 20px;
+}
+
+.display_zone table,
+th,
+td {
+    border-collapse: collapse;
+    text-align: center;
+    height: 20px;
+    width: 150px;
+    font-size: 20px;
+    border: black solid;
+    padding: 5px;
+}
+
+th {
+    background-image: linear-gradient(rgb(64, 64, 64), black);
+    color: white;
+}
+
+td {
+    background-image: linear-gradient(rgb(145, 144, 144), white);
+    color: black;
+}
+
+
+/* -------footer-box------begin */
+
+.footer {
+    border-top: 1px #686868 solid;
+    height: 68px;
+    background-color: #111112;
+    display: flex;
+    position: relative;
+}
+
+.footer span {
+    display: block;
+    font-size: 20px;
+    color: rgb(186, 182, 182);
+    margin-left: 800px;
+    font-weight: normal;
+    align-items: center;
+}
+
+
+/* -------footer------end */

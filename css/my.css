@@ -1,0 +1,280 @@
+/* 公共样式 */
+
+@font-face {
+    font-family: myFirstFont;
+    src: url(../font/Nosifer-Regular.ttf);
+}
+
+* {
+    padding: 0;
+    margin: 0;
+}
+
+img,
+span {
+    user-select: none;
+    cursor: pointer;
+}
+
+
+/* ----------------------- */
+
+.container {
+    width: 100%;
+    height: 100%;
+}
+
+
+/* -------header-------begin */
+
+.header {
+    width: 100%;
+    height: 60px;
+    background-color: #1e1e20;
+    display: flex;
+    position: relative;
+}
+
+.header .logo {
+    display: flex;
+    height: 100%;
+    width: 175px;
+    align-items: center;
+    margin-left: 25px;
+    user-select: none;
+}
+
+.logo img {
+    width: 30px;
+    height: 30px;
+}
+
+.logo span {
+    font-family: myFirstFont;
+    display: block;
+    font-size: 25px;
+    color: #fff;
+    margin-left: 15px;
+    font-weight: bold;
+}
+
+.header .middle {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    margin-left: 890px;
+}
+
+.middle .search {
+    height: 20px;
+    background-color: #434346;
+    display: flex;
+    align-items: center;
+    border-radius: 30px;
+    padding: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.search input {
+    background-color: transparent;
+    border: 0;
+    height: 15px;
+    line-height: 15px;
+    width: 200px;
+    outline: none !important;
+    color: #fff;
+    margin-left: 5px;
+}
+
+.other {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    width: 500px;
+    margin-left: 80px;
+}
+
+.other .menu {
+    display: flex;
+    align-items: center;
+}
+
+.other .menu img {
+    margin-right: 15px;
+    height: 25px;
+    width: 25px;
+    border-radius: 50%;
+}
+
+#game {
+    margin-right: 5px;
+    font-size: 15px;
+    height: 25px;
+    width: 100px;
+}
+
+
+/* ------header-------- end*/
+
+.line {
+    width: 100%;
+    height: 2px;
+    background-image: linear-gradient(120deg, #f8f7f6 0%, red 30%, red 60%, #464547 100%);
+}
+
+.main {
+    width: 100%;
+    height: 660px;
+    display: flex;
+    background-image: url(../image/ruins4.jpeg);
+    background-repeat: no-repeat;
+    background-position: left top;
+    background-size: cover;
+    font-size: 22px;
+}
+
+.main .left {
+    width: 40%;
+}
+
+#photo {
+    width: 200px;
+    height: 200px;
+}
+
+.imgbox {
+    border-radius: 50px;
+}
+
+.left .outbox {
+    margin-top: 10px;
+    margin-left: 200px;
+}
+
+.btn {
+    font-size: 15px;
+    height: 25px;
+    width: 80px;
+}
+
+.lll {
+    width: 200px;
+    height: 30px;
+    background-color: #010101;
+    color: #fff;
+    font-size: 15px;
+    margin-left: 10px;
+}
+
+.sr-only {
+    font-size: 20px;
+}
+
+.only {
+    font-size: 18px;
+}
+
+#text {
+    margin-left: 3px;
+    font-size: 20px;
+}
+
+label {
+    position: relative;
+}
+
+#pic {
+    position: absolute;
+    left: 0;
+    top: 0;
+    opacity: 0;
+}
+
+#btn {
+    margin-right: 5px;
+}
+
+#text {
+    color: rgb(12, 0, 0);
+}
+
+.left .photo {
+    margin-left: 250px;
+    margin-top: 50px
+}
+
+.main .right {
+    margin-top: 100px;
+}
+
+.right .block {
+    margin-bottom: 10px;
+    height: 20%;
+}
+
+#u {
+    height: 10%;
+}
+
+#p {
+    height: 28%;
+}
+
+#username {
+    margin-left: 10px;
+    color: rgba(138, 14, 233, 0.98);
+}
+
+#email {
+    margin-left: 50px;
+    color: rgba(138, 14, 233, 0.98);
+}
+
+.pwd {
+    font-size: 18px;
+}
+
+#hide {
+    margin-top: 10px;
+    margin-left: 200px;
+}
+
+#old {
+    margin-left: 31px;
+}
+
+#new {
+    margin-left: 23px;
+}
+
+#modify {
+    margin-left: 23px;
+}
+
+#logout {
+    margin-left: 300px;
+}
+
+
+/* -------footer-box------begin */
+
+.footer {
+    border-top: 1px #686868 solid;
+    height: 68px;
+    background-color: #111112;
+    display: flex;
+    position: relative;
+}
+
+.footer span {
+    display: block;
+    font-size: 20px;
+    color: rgb(186, 182, 182);
+    margin-left: 800px;
+    font-weight: normal;
+    align-items: center;
+}
+
+
+/* -------footer------end */

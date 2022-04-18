@@ -1,0 +1,280 @@
+/* body {
+	background-image: url("../img/金克丝.jpg");
+	background-size: 100%;
+} */
+
+#chatBox {
+    width: 100%;
+    height: 180px;
+    background: rgba(136, 180, 251, 0.5);
+    position: absolute;
+    bottom: 0;
+}
+
+#profile {
+    width: 90px;
+    height: 90px;
+    background: url("../img/兔子.jpg");
+    background-size: 100%;
+    display: inline-block;
+    position: absolute;
+    top: 16px;
+    left: 16px;
+    border-radius: 5px;
+}
+
+#name {
+    position: absolute;
+    top: 110px;
+    left: 30px;
+    color: cornsilk;
+}
+
+#textBox {
+    width: 60%;
+    height: 80px;
+    border: 3px solid #eb800d;
+    opacity: 0.8;
+    position: absolute;
+    top: 18px;
+    left: 115px;
+    border-radius: 5px;
+}
+
+#text {
+    width: 95%;
+    height: 99%;
+    position: absolute;
+    left: 8px;
+    font-size: large;
+    color: cornsilk;
+}
+
+#triangle {
+    width: 0;
+    height: 0;
+    border: 12px solid transparent;
+    border-top-color: white;
+    border-bottom: none;
+    border-left-color: transparent;
+    border-right-color: transparent;
+    position: absolute;
+    bottom: 3px;
+    right: 3px;
+}
+
+#choice1 {
+    width: 30%;
+    height: 30px;
+    background: rgba(rgb(211, 16, 16), rgb(51, 146, 51), rgb(21, 21, 158), 0.5);
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: large;
+}
+
+#choice2 {
+    width: 30%;
+    height: 30px;
+    background: rgba(rgb(211, 16, 16), rgb(51, 146, 51), rgb(21, 21, 158), 0.5);
+    position: absolute;
+    top: 45px;
+    right: 20px;
+    font-size: large;
+}
+
+#choice3 {
+    width: 30%;
+    height: 30px;
+    background: rgba(rgb(211, 16, 16), rgb(51, 146, 51), rgb(21, 21, 158), 0.5);
+    position: absolute;
+    top: 75px;
+    right: 20px;
+    font-size: large;
+}
+
+#save {
+    width: 6%;
+    height: 35px;
+    background: rgba(rgb(211, 16, 16), rgb(51, 146, 51), rgb(21, 21, 158), 0.5);
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+    font-size: large;
+}
+
+#load {
+    width: 6%;
+    height: 35px;
+    background: rgba(rgb(211, 16, 16), rgb(51, 146, 51), rgb(21, 21, 158), 0.5);
+    position: absolute;
+    bottom: 0px;
+    right: 6%;
+    font-size: large;
+}
+
+#back {
+    width: 6%;
+    height: 35px;
+    background: rgba(rgb(211, 16, 16), rgb(51, 146, 51), rgb(21, 21, 158), 0.5);
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    font-size: large;
+}
+
+#saveBox {
+    width: 40%;
+    height: 330px;
+    background: rgba(136, 180, 251, 0.5);
+    position: absolute;
+    top: 20%;
+    left: 30%;
+}
+
+#tip1 {
+    width: 40%;
+    height: 30px;
+    position: absolute;
+    left: 35%;
+    font-size: large;
+}
+
+#x1 {
+    width: 35px;
+    height: 30px;
+    background: url("../img/Cross.png");
+    background-size: 100%;
+    display: inline-block;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    border-radius: 0px;
+}
+
+#location1 {
+    width: 100%;
+    height: 30px;
+    background: rgba(rgb(211, 16, 16), rgb(51, 146, 51), rgb(21, 21, 158), 0.5);
+    position: absolute;
+    top: 30px;
+    font-size: large;
+}
+
+#location2 {
+    width: 100%;
+    height: 30px;
+    background: rgba(rgb(211, 16, 16), rgb(51, 146, 51), rgb(21, 21, 158), 0.5);
+    position: absolute;
+    top: 60px;
+    font-size: large;
+}
+
+#location3 {
+    width: 100%;
+    height: 30px;
+    background: rgba(rgb(211, 16, 16), rgb(51, 146, 51), rgb(21, 21, 158), 0.5);
+    position: absolute;
+    top: 90px;
+    font-size: large;
+}
+
+#location4 {
+    width: 100%;
+    height: 30px;
+    background: rgba(rgb(211, 16, 16), rgb(51, 146, 51), rgb(21, 21, 158), 0.5);
+    position: absolute;
+    top: 120px;
+    font-size: large;
+}
+
+#location5 {
+    width: 100%;
+    height: 30px;
+    background: rgba(rgb(211, 16, 16), rgb(51, 146, 51), rgb(21, 21, 158), 0.5);
+    position: absolute;
+    top: 150px;
+    font-size: large;
+}
+
+#location6 {
+    width: 100%;
+    height: 30px;
+    background: rgba(rgb(211, 16, 16), rgb(51, 146, 51), rgb(21, 21, 158), 0.5);
+    position: absolute;
+    top: 180px;
+    font-size: large;
+}
+
+#location7 {
+    width: 100%;
+    height: 30px;
+    background: rgba(rgb(211, 16, 16), rgb(51, 146, 51), rgb(21, 21, 158), 0.5);
+    position: absolute;
+    top: 210px;
+    font-size: large;
+}
+
+#location8 {
+    width: 100%;
+    height: 30px;
+    background: rgba(rgb(211, 16, 16), rgb(51, 146, 51), rgb(21, 21, 158), 0.5);
+    position: absolute;
+    top: 240px;
+    font-size: large;
+}
+
+#location9 {
+    width: 100%;
+    height: 30px;
+    background: rgba(rgb(211, 16, 16), rgb(51, 146, 51), rgb(21, 21, 158), 0.5);
+    position: absolute;
+    top: 270px;
+    font-size: large;
+}
+
+#location10 {
+    width: 100%;
+    height: 30px;
+    background: rgba(rgb(211, 16, 16), rgb(51, 146, 51), rgb(21, 21, 158), 0.5);
+    position: absolute;
+    top: 300px;
+    font-size: large;
+}
+
+#yourNameBox {
+    width: 30%;
+    height: 100px;
+    background: rgba(136, 180, 251, 0.5);
+    position: absolute;
+    top: 30%;
+    left: 35%;
+}
+
+#tip2 {
+    width: 40%;
+    height: 30px;
+    position: absolute;
+    top: 5%;
+    left: 30%;
+    font-size: large;
+    color: rgb(224, 249, 5);
+    font-weight: bold;
+}
+
+#yourName {
+    width: 70%;
+    height: 30%;
+    position: absolute;
+    top: 40%;
+    left: 5%;
+}
+
+#go {
+    width: 17%;
+    height: 32%;
+    position: absolute;
+    top: 42%;
+    right: 3%;
+    font-size: medium;
+}
