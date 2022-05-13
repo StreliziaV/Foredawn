@@ -1,7 +1,7 @@
-/* body {
-	background-image: url("../img/金克丝.jpg");
+body {
+	background-image: url("../img/starter.png");
 	background-size: 100%;
-} */
+} 
 
 #chatBox {
     width: 100%;
@@ -14,8 +14,6 @@
 #profile {
     width: 90px;
     height: 90px;
-    background: url("../img/兔子.jpg");
-    background-size: 100%;
     display: inline-block;
     position: absolute;
     top: 16px;
