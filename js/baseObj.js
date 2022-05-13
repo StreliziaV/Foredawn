@@ -1,10 +1,10 @@
 var baseObj = {
-	//随机数
+	//genrating random number
 	randomNum: function(min, max) {
 		return parseInt(Math.random() * (max - min + 1) + min);
 	},
 
-	//两个矩形元素之间的碰撞检测
+	//monter the collision of two rectangles
 	rectangleCrashExamine: function (obj1, obj2) {
 			var obj1Left = obj1.offsetLeft;
 			var obj1Width = obj1.offsetLeft + obj1.offsetWidth;

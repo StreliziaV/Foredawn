@@ -2,7 +2,7 @@ var current_user = undefined
 var save = undefined
 var starter = document.getElementById('starter');
 
-//获取current_user & 加载load和save list
+// get current_user & load save list
 window.onload = function() {
     var status = false;
     // ajax
@@ -16,8 +16,8 @@ window.onload = function() {
         }
     });
 
-    // 根据 status 的状态 进行后续操作
-    // myajax 请求完毕时执行
+    // Act according to status
+    // excute after myajax end
     $.when(myajax).done(function() {
         if (status) {
             console.log('connect' + current_user)
@@ -27,6 +27,7 @@ window.onload = function() {
                 return;
             }
             if (save != undefined) {
+                // load the game materials
                 for (var i = 0; i <= save.length - 1; i++) {
                     saved[save[i].location - 1] = save[i].scene;
                     saved2[save[i].location - 1] = save[i].hasring;
@@ -72,7 +73,7 @@ window.onload = function() {
     });
 }
 
-//跳转到个人中心
+// jump to personnel center
 function center() {
     var status = false;
     // ajax
@@ -87,8 +88,8 @@ function center() {
         }
     });
 
-    // 根据 status 的状态 进行后续操作
-    // myajax 请求完毕时执行
+    // Act according to status
+    // excute after myajax end
     $.when(myajax).done(function() {
         if (status) {
             setTimeout("window.location = 'my.html'", 500);
@@ -96,7 +97,7 @@ function center() {
     });
 }
 
-//存档存入数据库
+// the save savefiles in DB application sending to the back-end
 function save_data(location, scene, save_name, hasring, nickname) {
     var status = false;
     // ajax
@@ -117,8 +118,8 @@ function save_data(location, scene, save_name, hasring, nickname) {
         }
     });
 
-    // 根据 status 的状态 进行后续操作
-    // myajax 请求完毕时执行
+    // Act according to status
+    // excute after myajax end
     $.when(myajax).done(function() {
         if (status) {
             if (f = 0) {

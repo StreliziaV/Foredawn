@@ -4,6 +4,7 @@ var modify = document.getElementById('modify');
 var back_to_game = document.getElementById('game');
 var photo = document.getElementById('photo');
 
+// display the user information as soon as openning the page
 window.onload = function() {
     var status = false;
     var flag_value = 0;
@@ -20,8 +21,8 @@ window.onload = function() {
         }
     });
 
-    // 根据 status 的状态 进行后续操作
-    // myajax 请求完毕时执行
+    // Act according to status
+    // excute after myajax end
     $.when(myajax).done(function() {
         if (status) {
             if (current_user == undefined) {
@@ -37,19 +38,15 @@ window.onload = function() {
             console.log(current_user)
         }
     });
-
-    // if (current_user == undefined) {
-    //     alert('Fail to get userinfo. Please login!');
-    //     setTimeout("window.location = 'index.html'", 500);
-    //     return;
-    // }
 }
 
+// logout
 function logout() {
     current_user = undefined;
     window.location = 'index.html';
 }
 
+// jump to the game page
 function backtogame() {
     var status = false;
     flag_value = 2;
@@ -64,6 +61,7 @@ function backtogame() {
     setTimeout("window.location = 'game.html'", 500);
 }
 
+// modify the password with old password and valid new password
 function modify_pwd() {
     old_pwd = document.getElementById('old').value;
     new_pwd = document.getElementById('new').value;
@@ -96,8 +94,8 @@ function modify_pwd() {
             }
         });
 
-        // 根据 status 的状态 进行后续操作
-        // myajax 请求完毕时执行
+        // Act according to status
+        // excute after myajax end
         $.when(myajax).done(function() {
             if (status) {
                 if (verify_flag = 0) {
@@ -124,27 +122,27 @@ function modify_pwd() {
             time = 60;
             clearInterval(mytime);
             $('#modify').attr("value", "modify");
-            $('#modify').attr("disabled", false); //按键可用
+            $('#modify').attr("disabled", false); //enable
         } else {
-            $('#modify').attr("disabled", true); //按键不可用
+            $('#modify').attr("disabled", true); //disable
         }
     }
-    //设置一个定时，一秒执行一次
+    // excute ome time per second
     mytime = setInterval(function() {
         subs();
     }, 1000)
 }
 
-//上传photo
+//upload photo
 $(function() {
-    // 封装ajax函数
+    // ajax
     function update(url, formdata, callback) {
         $.ajax({
             url: url,
             type: "POST",
             data: formdata,
             dataType: "json",
-            processData: false, // jQuery不要去处理发送的数据
+            processData: false, // jQuery does not process the data
             contentType: false,
             success: function(data) {
                 callback(data)
@@ -156,7 +154,7 @@ $(function() {
 
         })
     }
-    // 执行input时间时调用
+    // call when excuting input
     $("#pic").change(function() {
         var imgSize = 4000000
         var zzz = /\.(jpg|png|jpeg|bmp)/i
@@ -180,25 +178,15 @@ $(function() {
                 console.log(data.urls);
                 photo.src = data.urls;
                 current_user.photo = data.urls;
-                // var localsto = window.localStorage
-                // localStorage.setItem("src", data.urls)
-                // $('.imgbox img').attr('src', localsto.src);
-
             })
 
         } else {
             alert("Please select a photo in proper format and smaller than 4M ")
         }
     })
-
-    // // 将服务端返回的数据保存在localStorage中
-    // window.onload = function() {
-    //     var localsto = window.localStorage
-    //     $('.imgbox img').attr('src', localsto.src);
-    // }
 })
 
-//显示上传文件路径
+// display the path of uploaded file
 $("#pic").change(function() {
     $("#text").html($("#pic").val());
 })

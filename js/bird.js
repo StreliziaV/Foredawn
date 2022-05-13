@@ -1,9 +1,10 @@
+// the copter object
 var bird = {
-	flyTimer:null,//小鸟飞翔定时器
-	wingTimer:null,//小鸟翅膀摆动定时器
+	flyTimer:null,//copter's flight timer
+	wingTimer:null,//Copter's Wing Swing Timer
 	
 	div:document.createElement("div"),
-	fallSpeed: 0, //小鸟下落速度
+	fallSpeed: 0, //copter's falling speed
 	showBird:function(parentObj) {
 		this.div.style.width = "40px";
 		this.div.style.height = "28px";
@@ -16,25 +17,25 @@ var bird = {
 		this.div.id = "bird_in_game";
 		this.fallSpeed = 0;
 		
-		parentObj.appendChild(this.div);  //将小鸟DIV插入游戏界面中
+		parentObj.appendChild(this.div);  //Insert the copter div variable into the game interface
 	},
 
-	flyBird: function(){ //控制小鸟飞翔下落的函数
+	flyBird: function(){ //function that controls the flying and falling of the copter
 		bird.flyTimer = setInterval(fly,40);
 		var win_pic = ["url(img/bird0.png)", "url(img/bird1.png)"];
 		var win_ind = 0;
 		function fly() {
 			bird.div.style.top = bird.div.offsetTop + bird.fallSpeed++ + "px";
 			if (bird.div.offsetTop < 0) {  
-				bird.fallSpeed = 2; //这里用于控制小鸟不要飞出界面
+				bird.fallSpeed = 2; //This is used to control the copter not to fly out of the interface
 			}
 			if (bird.div.offsetTop >= 395) {
 				bird.fallSpeed = 0;
-				clearInterval(bird.flyTimer); //一旦飞到地面，清除定时器
-				clearInterval(bird.wingTimer); //清除翅膀摆动定时器
+				clearInterval(bird.flyTimer); //Once on the ground, clear the timer, end game
+				clearInterval(bird.wingTimer); //clear copter's flight timer
 			}
 			if (bird.fallSpeed > 12) {
-				bird.fallSpeed = 12;  //鸟的最大下落速度控制在12
+				bird.fallSpeed = 12;  //The maximum falling speed of the copter is controlled at 12
 			}
 		
 			if (score >= fly_win_score) {
@@ -49,11 +50,11 @@ var bird = {
 		}
 	},
 	
-	wingWave: function() { //控制小鸟煽动翅膀的函数
+	wingWave: function() { //The function that controls the animation of the copter
 		var up = ["url(img/up_bird0.png)", "url(img/up_bird1.png)"];
 		var down = ["url(img/down_bird0.png)", "url(img/down_bird1.png)"];
 		var i = 0, j = 0;
-		bird.wingTimer = setInterval(wing,120);//逐帧动画，小鸟煽动翅膀
+		bird.wingTimer = setInterval(wing,120);
 		function wing() {
 			if (bird.fallSpeed > 0) {
 				bird.div.style.backgroundImage = down[i++];
@@ -65,6 +66,7 @@ var bird = {
 		}
 	},	
 
+	//used when restart the game
 	removeBird() {
 		var my_bird = document.getElementById("bird_in_game");
 		my_bird.remove();

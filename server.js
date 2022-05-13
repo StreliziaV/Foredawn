@@ -7,7 +7,7 @@ const path = require("path");
 const os = require("os");
 const multer = require("multer");
 const upload = multer({
-    dest: 'dest/'
+    dest: 'photo/'
 });
 const app = express();
 app.engine('html', require('express-art-template'))
@@ -18,18 +18,19 @@ app.get('/', (req, res) => {
     res.render('file.html')
 })
 var my_v_code = 0;
+// track the login states
 var temp_user = undefined;
 
-//数据库
+// connect mySQL
 var connection = mysql.createConnection({
     host: 'localhost',
     user: 'root',
-    password: 'pascal',
+    password: 'Strelizia&Fischl',
     database: 'server'
 });
 connection.connect();
 
-//随机6位数
+// generate six bits code randomly
 function createSixNum() {
     var Num = "";
     for (var i = 0; i < 6; i++) {
@@ -38,7 +39,7 @@ function createSixNum() {
     return Num;
 };
 
-// 允许跨域访问
+// allow cross-domain access
 app.all('*', function(req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "X-Requested-With");
@@ -48,9 +49,10 @@ app.all('*', function(req, res, next) {
     next();
 });
 
-// 处理http请求，解析
+// parse the html application
 app.use(bodyParser.urlencoded({ extended: false }));
 
+// send email
 app.get('/email', (req, res) => {
     my_v_code = createSixNum();
     // res.send({v_code: my_v_code.toString()});
@@ -58,12 +60,12 @@ app.get('/email', (req, res) => {
 
     let transporter = nodemailer.createTransport({
         // host: 'smtp.ethereal.email',
-        service: 'qq', // 使用了内置传输发送邮件 查看支持列表：https://nodemailer.com/smtp/well-known/
-        port: 465, // SMTP 端口
-        secureConnection: true, // 使用了 SSL
+        service: 'qq', // Send mail using built-in transport  //See the surpported list：https://nodemailer.com/smtp/well-known/
+        port: 465, // SMTP port
+        secureConnection: true, // using SSL
         auth: {
             user: '1779598903@qq.com',
-            // 这里密码不是qq密码，是你设置的smtp授权码
+            // smtp Authorization code
             pass: 'gtzxxfhhtaryfhig',
         }
     });
@@ -72,7 +74,7 @@ app.get('/email', (req, res) => {
         from: '"Foredawn" <1779598903@qq.com>', // sender address
         to: req.query.email, // list of receivers
         subject: 'Hello', // Subject line
-        // 发送text或者html格式
+        // send in text or html format
         // text: 'Hello world?', // plain text body
         html: '<b>you code is: ' + my_v_code + '</b>' // html body
     };
@@ -87,9 +89,10 @@ app.get('/email', (req, res) => {
     });
 })
 
+// verify the identification code
 app.get('/verify', (req, res) => {
 
-    //查询用户名是否被占用
+    // the query to check whether the username has been occupied in the DB
     const sqlStr1 = 'select * from user where username = ?';
     var param = [req.query.username];
     connection.query(sqlStr1, param, function(err, results) {
@@ -105,6 +108,8 @@ app.get('/verify', (req, res) => {
         }
         if (req.query.v_code == my_v_code.toString()) {
 
+            // If the username is unique, we insert the information into DB
+            // send the corresponding flag to the front-end
             const sqlStr2 = 'insert into user (username, password, email, photo, isAdmin) value (?,?,?,?,?)'
             var params = [req.query.username, req.query.password, req.query.email, './image/user.png', false];
             connection.query(sqlStr2, params, function(err, results) {
@@ -131,9 +136,10 @@ app.get('/verify', (req, res) => {
 
 })
 
+// login
 app.get('/login', (req, res) => {
 
-    //查询用户名是否存在
+    // the query to find whether the username is exist in the DB
     const sqlStr1 = 'select * from user where username = ?';
     var param = [req.query.username];
     connection.query(sqlStr1, param, function(err, results) {
@@ -150,7 +156,7 @@ app.get('/login', (req, res) => {
             res.send({ flag: 1 });
             return;
         }
-        //密码是否正确
+        // Then, check whether the password is correct
         const sqlStr2 = 'select password from user where username = ?';
         var param = [req.query.username];
         connection.query(sqlStr2, param, function(err, results) {
@@ -166,7 +172,8 @@ app.get('/login', (req, res) => {
                 res.send({ flag: 2 });
                 return;
             }
-            //检查是否为管理员
+            // Then, check whether it is an administrator
+            // Send the flags to the front-end, deciding which page he will see
             const sqlStr3 = 'select isAdmin from user where username = ?';
             var param = [req.query.username];
             connection.query(sqlStr3, param, function(err, results) {
@@ -189,6 +196,7 @@ app.get('/login', (req, res) => {
 
 })
 
+// personnel center
 app.get('/my', (req, res) => {
     if (req.query.flag == 0) {
         res.send({
@@ -205,7 +213,7 @@ app.get('/my', (req, res) => {
     if (req.query.flag == 3) {
         var new_pwd = req.query.new;
 
-        //修改密码
+        // modify the password
         const sqlStr6 = 'update user set password = ? where username = ?';
         var param = [new_pwd, req.query.current_user.username];
         connection.query(sqlStr6, param, function(err, results) {
@@ -225,6 +233,7 @@ app.get('/my', (req, res) => {
     }
 })
 
+// upload photos
 app.post('/picture', upload.single('imges'), (req, res) => {
     var imges = req.file
     fs.readFile(imges.path, (err, data) => {
@@ -237,9 +246,7 @@ app.post('/picture', upload.single('imges'), (req, res) => {
         var oriname = imgesori.lastIndexOf('.')
         var hzm = imgesori.substring(oriname, oriname.length)
         var pic = radname + hzm
-            //console.log(imges.path);
-            //console.log('./dest/' + pic);
-        fs.writeFile('./dest/' + pic, data, (err) => {
+        fs.writeFile('./photo/' + pic, data, (err) => {
             if (err) {
                 console.log("Image write failure.")
                 res.send({
@@ -254,7 +261,8 @@ app.post('/picture', upload.single('imges'), (req, res) => {
                 var cms = couter[cm]
             }
 
-            var picPath = './dest/' + pic;
+            // save in DB
+            var picPath = './photo/' + pic;
             var sqlStr4 = "update user set photo = ? where id = ?";
             //console.log(req.body.user_id);
             connection.query(sqlStr4, [picPath, req.body.user_id], (err) => {
@@ -271,8 +279,11 @@ app.post('/picture', upload.single('imges'), (req, res) => {
     })
 })
 
+// administrator
 app.get('/admin', (req, res) => {
     if (req.query.command == 'show_all_user') {
+
+        // display all users' information
         const sqlStr1 = 'select * from user';
         var param = [];
         connection.query(sqlStr1, param, function(err, results) {
@@ -292,6 +303,8 @@ app.get('/admin', (req, res) => {
             })
         });
     } else if (req.query.command == 'modify_password') {
+
+        // modify a user's password according to the username
         const sqlStr5 = 'update user set password = ? where username = ?';
         var param = [req.query.new, req.query.username];
         connection.query(sqlStr5, param, function(err, results) {
@@ -310,8 +323,11 @@ app.get('/admin', (req, res) => {
     }
 })
 
+//game
 app.get('/game', (req, res) => {
     if (temp_user != undefined) {
+
+        //load the savefiles from DB
         const sqlStr1 = 'select * from savefile where user_id = ?';
         var param = [temp_user.id];
         connection.query(sqlStr1, param, function(err, results) {
@@ -334,13 +350,16 @@ app.get('/game', (req, res) => {
     }
 })
 
+// jump tp personnel center page
 app.get('/center', (req, res) => {
     temp_user = req.query.current_user;
     res.send({});
 })
 
+// save file
 app.get('/save', (req, res) => {
 
+    //save savefiles in DB
     const sqlStr1 = 'delete from savefile where user_id = ? and location = ?';
     var param = [req.query.user_id, req.query.location];
     connection.query(sqlStr1, param, function(err) {

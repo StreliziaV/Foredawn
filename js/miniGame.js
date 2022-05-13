@@ -1,4 +1,4 @@
-// CONST
+// constants
 let Application = PIXI.Application,
     Container = PIXI.Container,
     loader = PIXI.loader,
@@ -12,14 +12,16 @@ let Application = PIXI.Application,
     ZOMBIE_SPEED = 1.5,
     DAMAGE = 1;
     
-// Define variables that might be used in more 
-// than one function
+// variables
 let state, treasure, zombies, exit, player, dungeon, app, ifPause,
 door, healthBar, message1, message2, message3, point1, point2, gameScene, gameOverScene, enemies, id;
 
-function start() {  
+// main() of the game
+function start() {
+  // variable
   ifPause = 1;
-  // object to display background
+  
+  // canvas to hold the game screen
   app = new Application({ 
     width: 512, 
     height: 512,                       
@@ -38,6 +40,7 @@ function start() {
   .load(setup);
 }      
 
+// set up a stage for game screen
 function setup() {
   // container for imaegs required during gaming
   gameScene = new Container();
@@ -45,11 +48,11 @@ function setup() {
   
 // process images with pixi engine
   id = resources["img/treasureHunter.json"].textures;
-  // Dungeon
+  // dungeon
   dungeon = new Sprite(id["dungeon.png"]);
   gameScene.addChild(dungeon);
   
-  // Door
+  // door
   door = new Sprite(id["door.png"]); 
   door.position.set(32, 0);
   gameScene.addChild(door);
@@ -93,19 +96,19 @@ function setup() {
     gameScene.addChild(zombie);
   }
   
-// design of health bar
+// health bar
   healthBar = new Container();
   healthBar.position.set(app.stage.width - 170, 4)
   gameScene.addChild(healthBar);
   
-  // Create the black background rectangle
+  // background rectangle for maximum HP
   let innerBar = new Graphics();
   innerBar.beginFill(0x000000);
   innerBar.drawRect(0, 0, 128, 8);
   innerBar.endFill();
   healthBar.addChild(innerBar);
   
-  // Create the front red rectangle
+  // front rectangle for realtime HP
   let outerBar = new Graphics();
   outerBar.beginFill(0xFF3300);
   outerBar.drawRect(0, 0, 128, 8);
@@ -121,6 +124,7 @@ function setup() {
     fontSize: 16,
     fill: "red"
   });
+  // text of HP bar
   message1 = new Text("HP", style1);
   message1.position.set(app.stage.width - 200, 0)
   gameScene.addChild(message1);
@@ -134,7 +138,7 @@ function setup() {
     fontSize: 24,
     fill: "white"
   });
-
+  // text of tips for the game
   message5 = new Text("Tips:\n \"w\": up   \"a\": left  \"s\": down \"d\": right\n\n  \"space\": pause\n\nclick the button to resume", style4);
   message5.position.set(60, app.stage.height / 2 - 150);
   startScene.addChild(message5);
@@ -142,16 +146,17 @@ function setup() {
   message6.position.set(app.stage.width/2 - 80, app.stage.height/2 + 25);
   startScene.addChild(message6);
 
+  // button to active gameloop
   let point3 = new Graphics();
   point3.beginFill(0x0bef47);
   point3.drawRect(app.stage.width/2-125, app.stage.height/2+25, 30, 30);
   point3.endFill();
-  point3.interactive = true;//响应交互
-  point3.buttonMode = true;//鼠标变手型
-  point3.on("pointerdown", driver);         // click the green button to active gameloop
+  point3.interactive = true;
+  point3.buttonMode = true;
+  point3.on("pointerdown", driver);
   startScene.addChild(point3);
   
-  // Create the `gameOver` scene
+  // screen for gameover
   gameOverScene = new Container();
   app.stage.addChild(gameOverScene);
   gameOverScene.visible = false;
@@ -161,7 +166,7 @@ function setup() {
     fontSize: 40,
     fill: "Yellow"
   });
-
+  // text of gameover
   message2 = new Text("Zombies ate your brain!", style2);
   message2.x = 80;
   message2.y = app.stage.height / 2 - 100;
@@ -172,6 +177,7 @@ function setup() {
     fontSize: 30,
     fill: "white"
   });
+  // text of gameover
   message3 = new Text("Try again!", style3);
   message3.x = app.stage.width/2 - 50;
   message3.y = app.stage.height/2;
@@ -180,26 +186,26 @@ function setup() {
   message4.x = app.stage.width/2 - 50;
   message4.y = app.stage.height/2 + 75;
   gameOverScene.addChild(message4); 
-
+  // button to retry the game
   let point1 = new Graphics();
   point1.beginFill(0x0bef47);
   point1.drawRect(app.stage.width/2-105, app.stage.height/2+5, 30, 30);
   point1.endFill();
-  point1.interactive = true;//响应交互
-  point1.buttonMode = true;//鼠标变手型
+  point1.interactive = true;
+  point1.buttonMode = true;
   point1.on("pointerdown", retry);
   gameOverScene.addChild(point1);
-
+  // button to quit the game
   let point2 = new Graphics();
   point2.beginFill(0x0bef47);
   point2.drawCircle(app.stage.width/2-90, app.stage.height/2+90, 15);
   point2.endFill();
-  point2.interactive = true;//响应交互
-  point2.buttonMode = true;//鼠标变手型
+  point2.interactive = true;
+  point2.buttonMode = true;
   point2.on("pointerdown", next);
   gameOverScene.addChild(point2);
   
-// interaction
+// movement control
   let left = keyboard(65),
     up = keyboard(87),
     right = keyboard(68),
@@ -262,12 +268,13 @@ function setup() {
   app.ticker.add(delta => gameLoop(delta));
 }
 
+// function to loop 60 times per second
 function gameLoop(delta){
   // Update the current game state:
   state(delta);
 }
 
-// activate gameloop
+// update argument and wait for retry() to restart game
 function driver(){
   startScene.visible = false;
   app.ticker.start();
@@ -342,7 +349,7 @@ function play(delta) {
   } 
 }
 
-// show the ending screen
+// ending screen of the game
 function end() {
   startScene.visible = false;
   gameScene.visible = false;
@@ -365,7 +372,7 @@ function next() {
   display(currentScene);
 }
 
-// return information if a sprite runs into boundaries
+// return in which direction a sprite runs into boundaries
 function contain(sprite, container) {
   let collision = undefined;
   // Left
@@ -396,7 +403,7 @@ function contain(sprite, container) {
   return collision;
 }
 
-// return information if two sprites hit
+// return in which direction two sprites hit
 function hitTestRectangle(r1, r2) {
   let hit, combinedHalfWidths, combinedHalfHeights, vx, vy;
   hit = false;
@@ -448,7 +455,8 @@ function keyboard(keyCode) {
   key.isUp = true;
   key.press = undefined;
   key.release = undefined;
-  // The `downHandler`
+
+  // when the key is pressed
   key.downHandler = function(event) {
     if (event.keyCode === key.code) {
       if (key.isUp && key.press) key.press();
@@ -457,7 +465,8 @@ function keyboard(keyCode) {
     }
     event.preventDefault();
   };
-  // The `upHandler`
+
+  // when the key is released
   key.upHandler = function(event) {
     if (event.keyCode === key.code) {
       if (key.isDown && key.release) key.release();

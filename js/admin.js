@@ -8,10 +8,10 @@ new_pwd = document.getElementById('new');
 verif = document.getElementById('verif');
 var display_zone = document.getElementById('display_zone');
 
-//显示user list
+// display user list when open the page
 window.onload = function() {
     var status = false;
-    // ajax
+    // ajax send application to the back-end
     var myajax = $.ajax({
         url: "http://127.0.0.1:8080/admin",
         data: {
@@ -25,10 +25,11 @@ window.onload = function() {
         }
     });
 
-    // 根据 status 的状态 进行后续操作
-    // myajax 请求完毕时执行
+    // Act according to status
+    // excute after myajax end
     $.when(myajax).done(function() {
         if (status) {
+            // check the login status
             if (current_user == undefined) {
                 alert('Please login!');
                 setTimeout("window.location = 'index.html'", 500);
@@ -42,10 +43,11 @@ window.onload = function() {
                     display_zone.innerHTML = '<table>no_row_return</table>'
                     return;
                 }
+                // display
                 for (var i = 0; i < request_result.length; i++) {
                     var new_tr = document.createElement("tr");
 
-                    //插入
+                    // insert information into the table in admin.html
                     var new_td1 = document.createElement("td");
                     new_td1.innerHTML = request_result[i].id;
                     new_tr.appendChild(new_td1);
@@ -73,13 +75,13 @@ window.onload = function() {
     });
 }
 
-//登出
+// logout
 function logout() {
     current_user = undefined;
     window.location = 'index.html';
 }
 
-//修改密码
+// modify password according to the username
 function modify_pwd() {
 
     if (new_pwd.value != verif.value) {
@@ -90,12 +92,11 @@ function modify_pwd() {
         return;
     } else {
         var status = false;
-        // flag_value = 3
+        var verify_flag;
         // ajax
         var myajax = $.ajax({
             url: "http://127.0.0.1:8080/admin",
             data: {
-                // flag: flag_value,
                 new: new_pwd.value,
                 username: username.value,
                 command: 'modify_password'
@@ -107,12 +108,15 @@ function modify_pwd() {
             }
         });
 
-        // 根据 status 的状态 进行后续操作
-        // myajax 请求完毕时执行
+        // Act according to status
+        // excute after myajax end
         $.when(myajax).done(function() {
             if (status) {
-                if (verify_flag = 0) {
+                if (verify_flag == 0) {
                     alert('Fail to modify password.');
+                    username.value = '';
+                    new_pwd.value = '';
+                    verif.value = '';
                     return;
                 }
                 verify_flag = 0;
@@ -125,7 +129,7 @@ function modify_pwd() {
     }
 }
 
-//更新
+// update infomation
 function update_info() {
     var status = false;
     // ajax
@@ -141,8 +145,8 @@ function update_info() {
         }
     });
 
-    // 根据 status 的状态 进行后续操作
-    // myajax 请求完毕时执行
+    // Act according to status
+    // excute after myajax end
     $.when(myajax).done(function() {
         if (status) {
             if (request_result == null) {
@@ -154,12 +158,14 @@ function update_info() {
                 return;
             }
             display_zone.innerHTML = '<table id="display_zone"><tr><th> User_id</th><th> Username</th><th> Password</th><th> Email</th><th> IsAdmin</th></tr> </table>'
-            console.log(display_zone)
+                // console.log(display_zone)
+
+            // display user list
             for (var i = 0; i < request_result.length; i++) {
 
                 var new_tr = document.createElement("tr");
 
-                //插入
+                // insert information into the table in admin.html
                 var new_td1 = document.createElement("td");
                 new_td1.innerHTML = request_result[i].id;
                 new_tr.appendChild(new_td1);

@@ -12,26 +12,26 @@ function countdown() {
     var username = document.getElementById('username').value;
     var password = document.getElementById('password').value;
 
-    //username和password不能为空
+    //username and password should not be empty
     if (!username || !password) {
         alert('Please enter both username and password.');
         return
     }
 
-    //密码是否少于8位
+    // check whether the password is less than 8 bits
     if (password.length < 8) {
         alert('The password is not strong enough.');
         return
     }
 
     var time = 60;
-    var email = document.getElementById('email').value; //获取输入框的邮箱
+    var email = document.getElementById('email').value; //get email
     if (!isEmail(email)) {
         alert('please enter valid email address');
         return;
     }
 
-    //将用户名和邮箱发到后台
+    // send the username and email to the back-end
     $.get('http://127.0.0.1:8080/email', {
         email: email,
     })
@@ -45,12 +45,12 @@ function countdown() {
             time = 60;
             clearInterval(mytime);
             $('#emailcore').attr("value", "Send identifying code");
-            $('#emailcore').attr("disabled", false); //按键可用
+            $('#emailcore').attr("disabled", false); //enable
         } else {
-            $('#emailcore').attr("disabled", true); //按键不可用
+            $('#emailcore').attr("disabled", true); //disable
         }
     }
-    //设置一个定时，一秒执行一次
+    //excute one time per second
     mytime = setInterval(function() {
         subs();
     }, 1000)
@@ -61,7 +61,7 @@ function verify() {
     var username = document.getElementById('username').value;
     var password = document.getElementById('password').value;
 
-    //验证码是否非6位
+    // check whether the identifying code is 6 bits
     if (user_code.length != 6) {
         alert('please enter correct verify code');
         return;
@@ -84,8 +84,8 @@ function verify() {
         }
     });
 
-    // 根据 status 的状态 进行后续操作
-    // myajax 请求完毕时执行
+    // Act according to status
+    // excute after myajax end
     $.when(myajax).done(function() {
         if (status) {
             console.log(typeof verify_flag);
